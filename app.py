@@ -15,14 +15,14 @@ db = mongo.db
 
 @app.route("/")
 def index():
-    bucket_name = "eng-district-390211"
+    bucket_name = "eng-distric-390211"
     file_name = "input.csv"
     csv_data = pd.DataFrame(pd.read_csv('gs://' + bucket_name + '/' + file_name, encoding='utf-8', encoding_errors='ignore'))
     csv_data = csv_data.to_dict(orient="records")
     db.task.insert_many(csv_data)
     
     return jsonify(
-        message="Welcome to Dyson app version 3! I am running inside pod!"
+        message="Welcome to Dyson app version 4! I am running inside pod!"
     )
 
 

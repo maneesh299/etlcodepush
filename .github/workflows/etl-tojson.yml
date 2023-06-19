@@ -37,7 +37,7 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Build Docker image in prod
-      run: docker build . --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/pythonapp:1.0
+      run: docker build . --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/pythonapp:latest
     # Generates an execution plan for Terraform
     - name: Push Docker image in prod
-      run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/pythonapp:1.0
+      run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/pythonapp:latest
