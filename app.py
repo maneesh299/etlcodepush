@@ -15,7 +15,7 @@ db = mongo.db
 
 @app.route("/")
 def index():
-    bucket_name = "eng-distric-390211"
+    bucket_name = "eng-district-390211"
     file_name = "input.csv"
     csv_data = pd.DataFrame(pd.read_csv('gs://' + bucket_name + '/' + file_name, encoding='utf-8', encoding_errors='ignore'))
     csv_data = csv_data.to_dict(orient="records")
