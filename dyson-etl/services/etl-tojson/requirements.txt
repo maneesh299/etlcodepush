@@ -1,0 +1,6 @@
+Flask
+Flask-PyMongo
+google-cloud-storage
+pandas
+gcsfs
+fsspec
