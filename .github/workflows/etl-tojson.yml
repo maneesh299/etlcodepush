@@ -47,11 +47,8 @@ jobs:
         cluster_name: ${{ secrets.CLUSTER }}
         location: ${{ secrets.CLUSTER_ZONE }}
 
-    - name: Create image tag
-      run: echo "IMAGE_TAG=$env:GITHUB_SHA" >> $env:GITHUB_ENV      
-
     - name: Lock image version in deployment.yaml
-      run: sed -i 's/PROJECT_ID/${{ secrets.GCP_PROJECT_ID }}/g; s/COMMIT_TAG/${{ env.IMAGE_TAG }}/g' applications/dysonapp/dysonapp.yaml
+      run: sed -i 's/PROJECT_ID/${{ secrets.GCP_PROJECT_ID }}/g; s/COMMIT_TAG/${{ GITHUB_SHA }}/g' applications/dysonapp/dysonapp.yaml
 
 
     - name: Deploy to GKE
