@@ -22,7 +22,7 @@ def index():
     db.task.insert_many(csv_data)
     
     return jsonify(
-        message="Welcome to Dyson etl app version 5! I am running inside pod!"
+        message="Welcome to Dyson et app version 5! I am running inside pod!"
     )
 
 
