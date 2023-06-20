@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: dysonapp
-          image: gcr.io/PROJECT_ID/pythonapp:COMMIT_TAG
+          image: gcr.io/eng-district-390211/pythonapp:latest
           ports:
             - containerPort: 5000
           imagePullPolicy: Always
