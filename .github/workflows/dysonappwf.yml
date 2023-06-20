@@ -41,4 +41,4 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Deploy to GKE
-      run: kubectl apply -f applications/dysonapp/dysonapp.yml
+      run: kubectl apply -f applications/dysonapp/dysonapp.yaml
