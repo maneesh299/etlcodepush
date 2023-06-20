@@ -48,7 +48,7 @@ jobs:
         location: ${{ secrets.CLUSTER_ZONE }}
 
     - name: Lock image version in deployment.yaml
-      run: sed -i 's/PROJECT_ID/${{ secrets.GCP_PROJECT_ID }}/g; s/COMMIT_TAG/${GITHUB_SHA}/g' applications/dysonapp/dysonapp.yaml
+      run: sed -i 's/PROJECT_ID/${{ secrets.GCP_PROJECT_ID }}/g; s/COMMIT_TAG/${{ GITHUB_SHA }}/g' applications/dysonapp/dysonapp.yaml
 
 
     - name: Deploy to GKE
