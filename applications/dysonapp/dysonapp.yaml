@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dysonapp
+  labels:
+    app: dysonapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dysonapp
+  template:
+    metadata:
+      labels:
+        app: dysonapp
+    spec:
+      containers:
+        - name: dysonapp
+          image: gcr.io/eng-district-390211/pythonapp:latest
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always

@@ -1,17 +1,19 @@
-name: 'ETL CICD'
+name: 'dysonapp'
 
 on:
   push:
     paths:
-    - "app.py"  
+    - ".github/workflows/dysonappwf.yml"
+    - "applications/dysonapp/dysonapp.yml"
+     
     branches:
     - main
   pull_request:
 
 
 jobs:
-  etlbuild:
-    name: 'Etlbuild'
+  dysonapp:
+    name: 'dysonapp'
     runs-on: ubuntu-latest
 
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
@@ -30,13 +32,13 @@ jobs:
         export_default_credentials: true  
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
-    - name: Configure Docker
-      run: gcloud auth configure-docker --quiet
+    - name: Connect to GKE
+      uses: google-github-actions/get-gke-credentials@v0
+      with:
+        cluster_name: ${{ secrets.CLUSTER }}
+        location: ${{ secrets.CLUSTER_ZONE }}
 
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Build Docker image in prod
-      run: docker build . --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/pythonapp:latest
-    # Generates an execution plan for Terraform
-    - name: Push Docker image in prod
-      run: docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/pythonapp:latest
+    - name: Deploy to GKE
+      run: kubectl apply -f applications/dysonapp/dysonapp.yml
