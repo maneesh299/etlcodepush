@@ -1,4 +1,4 @@
-name: 'dysonapp'
+name: 'dysonap'
 
 on:
   push:
